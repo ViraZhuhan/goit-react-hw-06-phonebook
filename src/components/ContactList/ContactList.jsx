@@ -1,8 +1,8 @@
-import { List, Item, Button } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeContact } from 'redux/contacts/contactsSlice';
+import { List, Item, Button } from './ContactList.styled';
 
-export default function ContactsList () {
+export default function ContactsList() {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts);
   const filter = useSelector(state => state.filter);
@@ -15,17 +15,14 @@ export default function ContactsList () {
 
   return (
     <List>
-        {getVisibleContacts().map(({ name, number, id }) => (
-          <Item key={id}>
-            <p>
-              {name}: {number}
-            </p>
-            <Button onClick={() => dispatch(removeContact(id))}>Delete</Button>
-          </Item>
-        ))}
-      </List>
-  )
+      {getVisibleContacts().map(({ name, number, id }) => (
+        <Item key={id}>
+          <p>
+            {name}: {number}
+          </p>
+          <Button onClick={() => dispatch(removeContact(id))}>Delete</Button>
+        </Item>
+      ))}
+    </List>
+  );
 }
-
-
-
